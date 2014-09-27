@@ -1,0 +1,172 @@
+FORMAT: 1A
+HOST: http://www.api.mola.mobi/v01
+
+# Mola API
+
+This API is used to help with ***mobile payments*** for people without credit or debit card and no bank account.
+
+First was thought was solution for *developing countries* but since not everyone doesn't want to follow the burocracy
+of getting credit card. It's **free** to use for developers  **can integrate in many apps you can** everything you need is have Mola account.
+for test use the ( *Mola Sandbox* )[www.sandbox.mola.mobi]
+# Mola Accounts 
+
+## Mola Accounts [/account]
+
+### Mola GET all Accounts [GET]
++ Response 200 (application/json)
+
+
+        [{
+          "Account_Phone": "820267410", "Name": "Oldemiro Américo Baloi", "OperatorCode": 1
+        }, {
+          "Account_Phone": "840267410", "Name": "Oldemiro Américo Baloi", "OperatorCode": 2
+        }]
+        
+## Mola custom Account [/account?{id,Account}]
+
+   + Parameters
+    
+     + id (int) ... The Account requested Id
+     + Account (string) ... The Phone Number the respective account.
+     
+   + Model (application/json)
+     
+        Json Retrive of Account
+
+        + Body 
+            
+               {
+                "id": "1"  
+                "Account": "820267410"     
+                 
+            }
+
+
+### Get Custom Account [GET]
+
+ + Response  200 (application/json)
+    
+        {
+          "Account": "820267410", "Name": "Oldemiro Américo Baloi", "OperatorCode": 1
+        }
+ + Response 404 (application/json)
+       
+        {"status":"Account not Found!"}
+
+### Remove Account [DELETE]
+
+ + Response 204
+ 
+### Insert new Account [POST]
+
+ + response 201 (application/json)
+    
+        {"status":"new Account Created Sucessful"}
+
+### Change Account Information [PUT]
+
+ + response 200 (application/json)
+ 
+ + response 403 (application/json)
+ 
+        {"status":"Information Access not allowed"}
+
+
+
+# Mola Payments [/payments]
+
+## Mola Retrive All Payments [GET]
+
++ Response 200 (application/json)
+
+        
+        
+## Mola Specific Payment [/payments/{id}]
+
+ + Parameters
+ 
+   + id (int) ... This is payment id
+   
+
+ + Model (application/json)
+     
+        Json Retrive of Account
+
+        + Body 
+            
+               {
+                
+                "payment_id": "1"   
+            }
+            
+### Get Element [GET]
+
+
+ + Response 200 (application/json)
+ 
+### Delete Element [DELETE]
+
+ + Response 204 (application/json)
+ 
+### Make new Payment [POST]
+
+ + Response 201 (application/json)
+
+        {"status":"new Account Created Sucessful"}
+
+### Update Payment Information [PUT]
+
+ + Response 200 (application/json)
+ 
+# Mola Get Account Payments [/{account}]
+
+
+## Mola Get All Payments [GET]
+
+ + Response 200
+ 
+## Mola Account custom payment [/{account}/{payment_id}]
+
+ + Parameters
+ 
+   + account (string) ... This is id of the account 
+
+   + payment_id (int) ... This is payment id
+   
+
+ + Model (application/json)
+     
+        Json Retrive of Account
+
+        + Body 
+            
+               {
+                
+                "account": "820267410"     
+                "payment_id": "1"   
+            }
+
+
+### Get Payment [GET]
+ + Request (application/json)
+ 
+        {
+         "account": "820267410"     
+         "payment_id": "1" 
+        }
+ 
+ + Response 200
+ 
+
+### Delete Payment [DELETE]
+
++ Response 204
+
+### Create new Payment [POST]
+
++ Response 201
+ 
+### Update Payment info [PUT]     
+
++ Response 200
+
