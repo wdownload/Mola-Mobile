@@ -133,7 +133,13 @@ for test use the ( *Mola Sandbox* )[www.sandbox.mola.mobi]
 
 ## Mola Get All Payments [GET]
 
- + Response 200
+ + Response 200 (application/json)
+ 
+        [{"Sender":820267410,"Sender_Name": "Oldemiro A Baloi", "Receiver":"846454131", "Receiver_Name":"Jose Matias",
+        "Date_Created":"20140717_1557","TRANSACTION_CODE":"BL325441A", "TRANSACTION_TYPE:"INTER_OPERATOR"
+        },{"Sender":820267410,"Sender_Name": "Oldemiro A Baloi", "Receiver":"826454131", "Receiver_Name":"Jose Matias",
+        "Date_Created":"20140716_1251","TRANSACTION_CODE":"BL321441C", "TRANSACTION_TYPE:"SAME_OPERATOR"
+         }]
  
 ## Mola Account custom payment [/{account}/payment/{payment_id}]
 
@@ -165,8 +171,11 @@ for test use the ( *Mola Sandbox* )[www.sandbox.mola.mobi]
          "payment_id": "1" 
         }
  
- + Response 200
+ + Response 200 (application/json)
  
+        {"Sender":820267410,"Sender_Name": "Oldemiro A Baloi", "Receiver":"846454131", "Receiver_Name":"Jose Matias",
+        "Date_Created":"20140717_1557","TRANSACTION_CODE":"BL325441A", "TRANSACTION_TYPE:"INTER_OPERATOR"
+        }
 
 ### Delete Payment [DELETE]
 
@@ -174,8 +183,10 @@ for test use the ( *Mola Sandbox* )[www.sandbox.mola.mobi]
 
 ### Create new Payment [POST]
 
-+ Response 201
++ Response 201 (application/json)
  
+        {"status":"created with sucess"}
+
 ### Update Payment info [PUT]     
 
 + Response 200
